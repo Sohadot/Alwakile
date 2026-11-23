@@ -3,7 +3,10 @@ on:
   push:
     branches:
       - main
-      - feat/production-landing-social-preview
+      - fix/github-pages-root
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 permissions:
   contents: write
@@ -26,11 +29,12 @@ jobs:
       - name: Validate production files
         run: python scripts/verify_site.py
       - name: Commit generated PNG when changed
+        if: github.event_name == 'push'
         run: |
-          if [ -z "$(git ls-files -- public/og-card.png)" ] || ! git diff --quiet -- public/og-card.png; then
+          if [ -z "$(git ls-files -- og-card.png)" ] || ! git diff --quiet -- og-card.png; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add public/og-card.png
+            git add og-card.png
             if ! git diff --cached --quiet; then
               git commit -m "build: update Alwakile social preview PNG"
               git push origin "HEAD:${GITHUB_REF_NAME}"
