@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://alwakile.com/sitemap.xml
