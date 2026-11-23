@@ -10,7 +10,7 @@ The site explores the role of identity, scope, delegation, revocation and accoun
 
 ## Publish
 
-Deploy the repository root as a static site at **https://alwakile.com/**, for example through Cloudflare Pages (no frontend build step required). Serve `index.html`, `favicon.svg`, `og-card.png`, `robots.txt`, and `sitemap.xml` from the web root.
+Deploy the **public/** directory as a static site at **https://alwakile.com/**, for example through Cloudflare Pages (no frontend build step required). Serve `index.html`, `favicon.svg`, `og-card.png`, `robots.txt`, and `sitemap.xml` from the `public/` web root. On Cloudflare Pages set the **Build output directory** to `public` and do not run a build command.
 
 The source design is intentionally implemented as accessible HTML/CSS without the exported React mockup runtime. The external fonts are optional and have local fallbacks.
 
@@ -32,4 +32,4 @@ Private inquiries: **agent@sohadot.com**. A secure escrow service such as **Escr
 
 ## Governance
 
-No unverified product functionality, certification claims, invented partners, false scarcity, analytics trackers or bulk programmatic SEO. The public root holds only site delivery files; development and documentation files remain in the repository, not an automatically exposed production directory when deploying.
+No unverified product functionality, certification claims, invented partners, false scarcity, analytics trackers or bulk programmatic SEO. Only the `public/` directory is deployed; internal scripts, GitHub workflows, and documentation remain outside the deployed web root.
