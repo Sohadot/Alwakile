@@ -84,6 +84,6 @@ except (ValueError, KeyError):
 txt((cx-85,cy+75), "AUTHORIZED", MONO_SMALL, BLUE)
 
 im=im.resize((W,H),Image.Resampling.LANCZOS)
-out=ROOT/"og-card.png"
+out=ROOT/"public"/"og-card.png"
 im.save(out,format="PNG",optimize=True)
 print(f"Rendered {out} ({out.stat().st_size:,} bytes)")
