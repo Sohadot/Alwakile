@@ -1,35 +1,45 @@
 # Alwakile.com
 
-A static-first editorial acquisition landing page for the **Alwakile.com** domain. Its meaning derives from the Arabic **الوكيل** (the authorized representative). The commercial name is spelled **Alwakile**, one word, with no hyphen.
+The canonical strategic-acquisition landing page for **Alwakile.com**, rooted in the Arabic **الوكيل** (the authorized agent). The domain brand is one word, **Alwakile**, without a hyphen.
 
-## Positioning
+## Public website
+
+**Live address:** https://alwakile.com/
+
+**Hosting:** GitHub Pages from `main` / `(root)`, with `CNAME` specifying `alwakile.com`.
+
+The public landing page is **`/index.html` at the repository root**, not this README and not `public/index.html`. This location matches the actual GitHub Pages source settings.
+
+The page is static HTML/CSS with no application build step. Its only optional remote dependencies are fonts (with local fallback); there are no user-tracking scripts or forms.
+
+## Brand and acquisition
 
 **AI can act. Who gave it the authority?**
 
-The site explores the role of identity, scope, delegation, revocation and accountability as AI agents act on behalf of people and organizations. The illustrated markets are potential uses of the name — not operating Alwakile products, standards, certifications, or legal services.
+The page describes the name's potential relevance to agent identity, delegation, least-privilege authority, revocation and accountability; these are positioning opportunities, not claims of a live platform, industry standard or legal offering.
 
-## Publish
+Private acquisition inquiries: **agent@sohadot.com**.
 
-Deploy the **public/** directory as a static site at **https://alwakile.com/**, for example through Cloudflare Pages (no frontend build step required). Serve `index.html`, `favicon.svg`, `og-card.png`, `robots.txt`, and `sitemap.xml` from the `public/` web root. On Cloudflare Pages set the **Build output directory** to `public` and do not run a build command.
+An independent escrow arrangement such as **Escrow.com** may be used with mutual agreement, subject to provider eligibility and terms. No fixed price, active escrow transaction or platform is represented.
 
-The source design is intentionally implemented as accessible HTML/CSS without the exported React mockup runtime. The external fonts are optional and have local fallbacks.
+## Social sharing
 
-## Social preview
+The actual PNG image at `/og-card.png` (1200×630) must remain in the repository root because the HTML references **https://alwakile.com/og-card.png** in Open Graph and X cards. The SVG favicon and sitemap/robots files also reside at the repository root.
 
-Use `og-card.png`, a real **1200 × 630 PNG**, for Open Graph and X previews. It is generated from the reproducible source `scripts/render_og.py`. On CI, `.github/workflows/site-quality.yml` renders the card, validates the site, and commits the card if changed. For local generation:
+The image renderer is versioned in `scripts/render_og.py`, and the deployment checks are in `scripts/verify_site.py`:
 
 ```sh
-python -m pip install 'Pillow==11.3.0'
+python -m pip install Pillow==11.3.0
 python scripts/render_og.py
 python scripts/verify_site.py
 ```
 
-After DNS/TLS is active, validate the canonical URL and refresh social-platform caches using LinkedIn Post Inspector and Facebook Sharing Debugger.
+The GitHub Actions workflow generates and checks the image; on the configured push branch it can commit updates to `og-card.png` when needed. The source page and scripts should not be represented as operational products.
 
-## Acquisition
+## Release verification
 
-Private inquiries: **agent@sohadot.com**. A secure escrow service such as **Escrow.com** may be used by mutual agreement, subject to provider eligibility and terms. This does not assert a current listing or escrow arrangement. The offered asset is the **domain name**, not a deployed AI authority platform.
+Check https://alwakile.com/ directly for the styled landing page, check https://alwakile.com/og-card.png for a **real image**, and confirm the canonical URL and social metadata. LinkedIn/Facebook/X previews need a live URL and may be cached externally.
 
-## Governance
+## Deployment contract
 
-No unverified product functionality, certification claims, invented partners, false scarcity, analytics trackers or bulk programmatic SEO. Only the `public/` directory is deployed; internal scripts, GitHub workflows, and documentation remain outside the deployed web root.
+GitHub Pages source: **Deploy from a branch** → `main` → `/(root)`. Do not change the publishing folder to `public`, which is not a supported branch-subdirectory selection in GitHub Pages. If hosting moves to Cloudflare Pages in the future, revisit the deployment contract explicitly.
