@@ -1,32 +1,33 @@
 # Alwakile.com
 
-The canonical strategic-acquisition landing page for **Alwakile.com**, rooted in the Arabic **الوكيل** (the authorized agent). The domain brand is one word, **Alwakile**, without a hyphen.
+Production-ready editorial landing page for the domain **Alwakile.com**; the concept is derived from the Arabic **الوكيل** (authorized agent). The brand is spelled **Alwakile**, always one word without a hyphen.
 
-## Public website
+## Authoritative GitHub Pages publishing contract
 
-**Live address:** https://alwakile.com/
+The GitHub Pages deployment workflow actually builds from **`/docs`** (confirmed by the Pages build log on 2026-11-23). Earlier documentation assumed `/(root)`, causing the live domain to show the README before a configuration change, then the Pages Jekyll build to fail because `docs/` did not exist.
 
-**Hosting:** GitHub Pages from `main` / `(root)`, with `CNAME` specifying `alwakile.com`.
+This release now publishes from **`main` → `/docs`**, with the following deployed files:
+- `docs/index.html` — authoritative editorial acquisition landing page.
+- `docs/og-card.png` — real 1200×630 social sharing image.
+- `docs/favicon.svg`, `docs/robots.txt`, `docs/sitemap.xml` — supporting public assets.
+- `docs/CNAME` — alwakile.com.
+- `docs/.nojekyll` — static deployment without unintended theme transformations.
 
-The public landing page is **`/index.html` at the repository root**, not this README and not `public/index.html`. This location matches the actual GitHub Pages source settings.
+The repository root is **not** the web output; `README.md`, `scripts/`, and `.github/` are development files excluded from the published folder. No JavaScript build or framework dependencies are required.
 
-The page is static HTML/CSS with no application build step. Its only optional remote dependencies are fonts (with local fallback); there are no user-tracking scripts or forms.
+**Canonical website:** https://alwakile.com/
 
-## Brand and acquisition
+## Brand and market positioning
 
-**AI can act. Who gave it the authority?**
+**AI can act. Who gave it the authority?** The page explores the conceptual relationship between Arabic agency and the governance of AI agents: identity, delegated limits, revocation, and accountability. Markets are strategic applications for the name, not representations of a working technical standard, legal service, or operational SaaS.
 
-The page describes the name's potential relevance to agent identity, delegation, least-privilege authority, revocation and accountability; these are positioning opportunities, not claims of a live platform, industry standard or legal offering.
+Private acquisition inquiries: **agent@sohadot.com**. Escrow.com or another reputable independent escrow service may be used when mutually agreed and subject to provider terms.
 
-Private acquisition inquiries: **agent@sohadot.com**.
+## Social preview and release checks
 
-An independent escrow arrangement such as **Escrow.com** may be used with mutual agreement, subject to provider eligibility and terms. No fixed price, active escrow transaction or platform is represented.
+The page references `https://alwakile.com/og-card.png` in Open Graph and X tags. This URL is correct **only if** GitHub Pages publishes `/docs` to the domain root, as configured.
 
-## Social sharing
-
-The actual PNG image at `/og-card.png` (1200×630) must remain in the repository root because the HTML references **https://alwakile.com/og-card.png** in Open Graph and X cards. The SVG favicon and sitemap/robots files also reside at the repository root.
-
-The image renderer is versioned in `scripts/render_og.py`, and the deployment checks are in `scripts/verify_site.py`:
+The reproducible image renderer and static release checks are run from the repository root:
 
 ```sh
 python -m pip install Pillow==11.3.0
@@ -34,12 +35,8 @@ python scripts/render_og.py
 python scripts/verify_site.py
 ```
 
-The GitHub Actions workflow generates and checks the image; on the configured push branch it can commit updates to `og-card.png` when needed. The source page and scripts should not be represented as operational products.
+CI uses the same `docs/og-card.png` as the deployed site. GitHub Pages also deploys automatically upon changes to the selected branch. Verify the Pages build-and-deployment workflow after merging; application checks alone do **not** prove that Pages succeeded.
 
-## Release verification
+## Governance
 
-Check https://alwakile.com/ directly for the styled landing page, check https://alwakile.com/og-card.png for a **real image**, and confirm the canonical URL and social metadata. LinkedIn/Facebook/X previews need a live URL and may be cached externally.
-
-## Deployment contract
-
-GitHub Pages source: **Deploy from a branch** → `main` → `/(root)`. Do not change the publishing folder to `public`, which is not a supported branch-subdirectory selection in GitHub Pages. If hosting moves to Cloudflare Pages in the future, revisit the deployment contract explicitly.
+Do not change the Pages publishing source to `/(root)` without moving or regenerating the site artifact to match. Do not duplicate live pages across root and docs. No invented customers, products, industry standards, transaction histories, tracking pixels, or artificial scarcity are represented.
