@@ -84,6 +84,7 @@ except (ValueError, KeyError):
 txt((cx-85,cy+75), "AUTHORIZED", MONO_SMALL, BLUE)
 
 im=im.resize((W,H),Image.Resampling.LANCZOS)
-out=ROOT/"docs"/"og-card.png"
-im.save(out,format="PNG",optimize=True)
-print(f"Rendered {out} ({out.stat().st_size:,} bytes)")
+for out in (ROOT/"og-card.png", ROOT/"docs"/"og-card.png"):
+    out.parent.mkdir(parents=True, exist_ok=True)
+    im.save(out,format="PNG",optimize=True)
+    print(f"Rendered {out} ({out.stat().st_size:,} bytes)")
